@@ -13,6 +13,15 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FinanzasPersonales.Data\FinanzasPersonales.Data.csproj" />
+    <ProjectReference Include="..\FinanzasPersonales.Core\FinanzasPersonales.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="/home/kroky/sandbox/FinanzasPersonales/FinanzasPersonales.Core/Modelos" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Modelos\**\*.cs" />
   </ItemGroup>
 
 </Project>
