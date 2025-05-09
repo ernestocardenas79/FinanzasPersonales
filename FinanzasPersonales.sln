@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanzasPersonales.Data", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanzasPersonales.Core", "FinanzasPersonales.Core\FinanzasPersonales.Core.csproj", "{2DC45683-A13B-4184-A734-521DC80C8009}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanzasPersonales.Tests", "FinanzasPersonales.Tests\FinanzasPersonales.Tests.csproj", "{8986A80F-0D14-4165-926C-7FF7E2056431}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{2DC45683-A13B-4184-A734-521DC80C8009}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DC45683-A13B-4184-A734-521DC80C8009}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DC45683-A13B-4184-A734-521DC80C8009}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8986A80F-0D14-4165-926C-7FF7E2056431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8986A80F-0D14-4165-926C-7FF7E2056431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8986A80F-0D14-4165-926C-7FF7E2056431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8986A80F-0D14-4165-926C-7FF7E2056431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

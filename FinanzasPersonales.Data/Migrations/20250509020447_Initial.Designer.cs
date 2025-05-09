@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinanzasPersonales.Data.Migrations
 {
     [DbContext(typeof(FinanzasDbContext))]
-    [Migration("20250505014521_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250509020447_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
