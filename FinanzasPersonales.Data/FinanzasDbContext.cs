@@ -35,7 +35,18 @@ public class FinanzasDbContext : DbContext
              .HasForeignKey(t => t.CuentaId);
             m.HasKey(t => t.Id);
         });
-        modelBuilder.Entity<Tipo>().HasKey(m => m.Id);
+
+        modelBuilder
+        .Entity<Tipo>(m =>
+        {
+            m.HasKey(t => t.Id);
+            m.HasData(new Tipo { Id = 1, Nombre = "Efectivo", EsIngreso = true },
+            new Tipo { Id = 2, Nombre = "Cuenta Debito", EsIngreso = true },
+            new Tipo { Id = 3, Nombre = "Cuenta Creadito", EsIngreso = false },
+            new Tipo { Id = 4, Nombre = "Inversion", EsIngreso = true });
+        });
+
+
         modelBuilder.Entity<GastoProgramado>().HasKey(m => m.Id);
 
 
