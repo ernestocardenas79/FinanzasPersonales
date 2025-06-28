@@ -22,13 +22,16 @@ namespace FinanzasPersonales.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FinanzasPersonales.Api.Modelos.GastoProgramado", b =>
+            modelBuilder.Entity("FinanzasPersonales.Api.Modelos.MovimientoProgramado", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int?>("AfectarAId")
+                        .HasColumnType("int");
 
                     b.Property<int>("CantidadPeriodos")
                         .HasColumnType("int");
@@ -45,7 +48,9 @@ namespace FinanzasPersonales.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GastosProgramados");
+                    b.HasIndex("AfectarAId");
+
+                    b.ToTable("MovimientosProgramados");
                 });
 
             modelBuilder.Entity("FinanzasPersonales.Core.Modelos.Cuenta", b =>
@@ -149,6 +154,15 @@ namespace FinanzasPersonales.Data.Migrations
                     b.HasIndex("CuentaId");
 
                     b.ToTable("Transacciones");
+                });
+
+            modelBuilder.Entity("FinanzasPersonales.Api.Modelos.MovimientoProgramado", b =>
+                {
+                    b.HasOne("FinanzasPersonales.Core.Modelos.Cuenta", "AfectarA")
+                        .WithMany()
+                        .HasForeignKey("AfectarAId");
+
+                    b.Navigation("AfectarA");
                 });
 
             modelBuilder.Entity("FinanzasPersonales.Core.Modelos.Cuenta", b =>

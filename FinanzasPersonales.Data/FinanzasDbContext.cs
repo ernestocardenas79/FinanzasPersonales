@@ -11,7 +11,7 @@ public class FinanzasDbContext : DbContext
     // DbSets para las entidades
     public DbSet<Cuenta> Cuentas { get; set; }
     public DbSet<Tipo> Tipos { get; set; }
-    public DbSet<GastoProgramado> GastosProgramados { get; set; }
+    public DbSet<MovimientoProgramado> MovimientosProgramados { get; set; }
     public DbSet<Transaccion> Transacciones { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -47,7 +47,7 @@ public class FinanzasDbContext : DbContext
         });
 
 
-        modelBuilder.Entity<GastoProgramado>().HasKey(m => m.Id);
+        modelBuilder.Entity<MovimientoProgramado>().HasKey(m => m.Id);
 
 
         // Si tienes herencia o configuraciones específicas, puedes agregarlas aquí

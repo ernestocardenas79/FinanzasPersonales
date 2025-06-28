@@ -4,14 +4,13 @@ using System.Linq;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 
-namespace FinanzasPersonales.Data.Repositories
-{
+namespace FinanzasPersonales.Data.Repositories;
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private readonly DbContext _context;
+        private readonly FinanzasDbContext _context;
         private readonly DbSet<T> _dbSet;
 
-        public GenericRepository(DbContext context)
+        public GenericRepository(FinanzasDbContext context)
         {
             _context = context;
             _dbSet = _context.Set<T>();
@@ -57,4 +56,3 @@ namespace FinanzasPersonales.Data.Repositories
             _context.SaveChanges();
         }
     }
-}
