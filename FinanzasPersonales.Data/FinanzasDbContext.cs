@@ -10,7 +10,7 @@ public class FinanzasDbContext : DbContext
 
     // DbSets para las entidades
     public DbSet<Cuenta> Cuentas { get; set; }
-    public DbSet<Tipo> Tipos { get; set; }
+    public DbSet<TipoCuenta> Tipos { get; set; }
     public DbSet<MovimientoProgramado> MovimientosProgramados { get; set; }
     public DbSet<Transaccion> Transacciones { get; set; }
 
@@ -37,13 +37,13 @@ public class FinanzasDbContext : DbContext
         });
 
         modelBuilder
-        .Entity<Tipo>(m =>
+        .Entity<TipoCuenta>(m =>
         {
             m.HasKey(t => t.Id);
-            m.HasData(new Tipo { Id = 1, Nombre = "Efectivo", EsIngreso = true },
-            new Tipo { Id = 2, Nombre = "Cuenta Debito", EsIngreso = true },
-            new Tipo { Id = 3, Nombre = "Cuenta Creadito", EsIngreso = false },
-            new Tipo { Id = 4, Nombre = "Inversion", EsIngreso = true });
+            m.HasData(new TipoCuenta { Id = 1, Nombre = "Efectivo", EsIngreso = true },
+            new TipoCuenta { Id = 2, Nombre = "Cuenta Debito", EsIngreso = true },
+            new TipoCuenta { Id = 3, Nombre = "Cuenta Creadito", EsIngreso = false },
+            new TipoCuenta { Id = 4, Nombre = "Inversion", EsIngreso = true });
         });
 
 

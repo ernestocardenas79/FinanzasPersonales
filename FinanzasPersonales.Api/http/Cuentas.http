@@ -1,0 +1,25 @@
+POST http://localhost:5088/api/Cuentas
+Content-Type: application/json
+
+{
+  "id": 0,
+  "nombre": "string",
+  "saldo": 0,
+  "tipo": {
+    "id": 0,
+    "nombre": "string",
+    "esIngreso": true
+  },
+  "tipoId": 0,
+  "transacciones": [
+    {
+      "id": 0,
+      "concepto": "string",
+      "monto": 0,
+      "fecha": "2025-06-28T19:55:45.614Z",
+      "tipoId": 0,
+      "cuentaId": 0,
+      "cuenta": "string"
+    }
+  ]
+}

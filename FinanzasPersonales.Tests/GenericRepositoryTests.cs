@@ -30,7 +30,7 @@ public class GenericRepositoryTests
             Nombre = "Test",
             Saldo = 100,
             TipoId = 1,
-            Tipo = new Tipo { Id = 5, Nombre = "Mega  Gasto", EsIngreso = true }
+            Tipo = new TipoCuenta { Id = 5, Nombre = "Mega  Gasto", EsIngreso = true }
         };
 
         // Act
