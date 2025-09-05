@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using PersonalFianance.
+using PersonalFianance.Data.Repositories;
 using PersonalFianance.Core.Models;
 
 namespace PersonalFianance.Api.Controllers

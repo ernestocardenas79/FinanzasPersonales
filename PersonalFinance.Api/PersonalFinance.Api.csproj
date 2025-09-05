@@ -17,12 +17,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PersonalFianance.Data\PersonalFianance.Data.csproj" />
-    <ProjectReference Include="..\PersonalFianance.Core\PersonalFianance.Core.csproj" />
+    <ProjectReference Include="..\PersonalFinance.Data\PersonalFinance.Data.csproj" />
+    <ProjectReference Include="..\PersonalFinance.Core\PersonalFinance.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="/home/kroky/sandbox/PersonalFianance/PersonalFianance.Core/Modelos" />
+    <Folder Include="/home/kroky/sandbox/PersonalFinance/PersonalFinance.Core/Modelos" />
   </ItemGroup>
 
   <ItemGroup>
