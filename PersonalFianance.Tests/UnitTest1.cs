@@ -1,4 +1,4 @@
-namespace FinanzasPersonales.Tests;
+namespace PersonalFianance.Tests;
 
 public class UnitTest1
 {

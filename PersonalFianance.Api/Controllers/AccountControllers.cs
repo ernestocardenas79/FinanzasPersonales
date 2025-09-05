@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
-using FinanzasPersonales.Data.Repositories;
-using FinanzasPersonales.Core.Modelos;
+using PersonalFianance.
+using PersonalFianance.Core.Models;
 
-namespace FinanzasPersonales.Api.Controllers
+namespace PersonalFianance.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class CuentasController : ControllerBase
     {
-        private readonly IGenericRepository<Cuenta> _repository;
+        private readonly IGenericRepository<Account> _repository;
 
-        public CuentasController(IGenericRepository<Cuenta> repository)
+        public CuentasController(IGenericRepository<Account> repository)
         {
             _repository = repository;
         }
@@ -33,8 +33,21 @@ namespace FinanzasPersonales.Api.Controllers
             return Ok(cuenta);
         }
 
+        // [HttpPost("debito")]
+        // public async Task<IActionResult> CrearCuentaDebito([FromBody] CreateDebitAccountDto nuevaCuenta)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return BadRequest(ModelState);
+        //     }
+
+        //     await _repository.AddAsync(nuevaCuenta);
+        //     return CreatedAtAction(nameof(GetCuenta), new { id = nuevaCuenta.Id }, nuevaCuenta);
+        // }
+
+
         [HttpPost]
-        public async Task<IActionResult> CrearCuenta([FromBody] Cuenta nuevaCuenta)
+        public async Task<IActionResult> CrearCuenta([FromBody] Account nuevaCuenta)
         {
             if (!ModelState.IsValid)
             {
@@ -46,7 +59,7 @@ namespace FinanzasPersonales.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> ActualizarCuenta(int id, [FromBody] Cuenta cuentaActualizada)
+        public async Task<IActionResult> ActualizarCuenta(int id, [FromBody] Account cuentaActualizada)
         {
             if (id != cuentaActualizada.Id)
             {

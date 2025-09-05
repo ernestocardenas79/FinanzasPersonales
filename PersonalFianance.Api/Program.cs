@@ -1,6 +1,6 @@
-using FinanzasPersonales.Data;
+using PersonalFianance.Data;
 using Microsoft.EntityFrameworkCore;
-using FinanzasPersonales.Data.Repositories;
+using PersonalFianance.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<FinanzasDbContext>(options =>
+builder.Services.AddDbContext<FinanceDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FinanzasPersonalesDbContext")));
 
 var app = builder.Build();
@@ -33,6 +33,6 @@ app.Run();
 
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<FinanzasDbContext>();
+    var dbContext = scope.ServiceProvider.GetRequiredService<FinanceDbContext>();
     dbContext.Database.Migrate();
 }
