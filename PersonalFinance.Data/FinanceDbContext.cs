@@ -9,10 +9,10 @@ public class FinanceDbContext : DbContext
     public FinanceDbContext(DbContextOptions<FinanceDbContext> options) : base(options) { }
 
     // DbSets para las entidades
-    public DbSet<Account> Cuentas { get; set; }
-    public DbSet<AccountType> Tipos { get; set; }
-    public DbSet<ScheduledMovement> MovimientosProgramados { get; set; }
-    public DbSet<Transaction> Transacciones { get; set; }
+    public DbSet<Account> Accounts { get; set; }
+    public DbSet<AccountType> Types { get; set; }
+    public DbSet<ScheduledMovement> ScheduledMovments { get; set; }
+    public DbSet<Transaction> Transactions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
