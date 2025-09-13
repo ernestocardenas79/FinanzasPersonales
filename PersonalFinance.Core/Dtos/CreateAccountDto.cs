@@ -7,7 +7,8 @@ public abstract class AccountDto
     public short BillingCycleClosingDate { get; set; } = 5;
 }
 
-public class CreateDebitAccountDto : AccountDto
+public class CreateDebitAccountDto
 {
+    public required string Name { get; set; }
     public Decimal OpeningBalance { get; set; }
 }

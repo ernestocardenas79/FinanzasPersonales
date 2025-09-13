@@ -22,16 +22,16 @@ public class FinanceDbContext : DbContext
         modelBuilder
             .Entity<Account>(m =>
             {
-                m.HasOne(c => c.Tipo)
+                m.HasOne(c => c.Type)
                  .WithOne()
-                 .HasForeignKey<Account>(c => c.TipoId);
+                 .HasForeignKey<Account>(c => c.TypeId);
                 m.HasKey(c => c.Id);
             });
 
         modelBuilder.Entity<Transaction>(m =>
         {
             m.HasOne(t => t.Account)
-             .WithMany(c => c.Transacciones)
+             .WithMany(c => c.Transactions)
              .HasForeignKey(t => t.AccountId);
             m.HasKey(t => t.Id);
         });
