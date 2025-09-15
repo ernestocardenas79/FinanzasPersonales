@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using PersonalFianance.Data.Repositories;
-using PersonalFianance.Core.Models;
+using PersonalFinance.Data.Repositories;
+using PersonalFinance.Core.Models;
 
 namespace PersonalFianance.Api.Controllers
 {

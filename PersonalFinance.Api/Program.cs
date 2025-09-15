@@ -1,6 +1,6 @@
-using PersonalFianance.Data;
+using PersonalFinance.Data;
 using Microsoft.EntityFrameworkCore;
-using PersonalFianance.Data.Repositories;
+using PersonalFinance.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
