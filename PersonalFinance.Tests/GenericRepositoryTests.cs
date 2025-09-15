@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using PersonalFianance.Core.Models;
-using PersonalFianance.Data;
-using PersonalFianance.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Xunit;
+using PersonalFinance.Core.Models;
+using PersonalFinance.Data;
+using PersonalFinance.Data.Repositories;
 
-namespace PersonalFianance.Tests;
+namespace PersonalFinance.Tests;
 
 public class GenericRepositoryTests
 {
@@ -27,11 +24,12 @@ public class GenericRepositoryTests
         var entity = new Account
         {
             Id = 1,
-            Nombre = "Test",
-            Saldo = 100,
-            TipoId = 1,
-            Tipo = new AccountType { Id = 5, Name = "Mega  Gasto", IsIncome = true }
-        };
+            Name = "Test",
+            Balance = 100,
+            TypeId = 1,
+            Type = new AccountType { Id = 5, Name = "Mega  Gasto", IsIncome = true },
+            BillingCycleDate = 15
+		};
 
         // Act
         await repository.AddAsync(entity);
@@ -40,6 +38,6 @@ public class GenericRepositoryTests
         // Assert
         var result = await repository.GetByIdAsync(1);
         Assert.NotNull(result);
-        Assert.Equal("Test", result.Nombre);
+        Assert.Equal("Test", result.Name);
     }
 }
