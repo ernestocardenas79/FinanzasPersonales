@@ -1,4 +1,4 @@
-namespace PersonalFianance.Core.Enums;
+namespace PersonalFinance.Core.Enums;
 
 /// <summary>
 /// Frequency of a scheduled movement.

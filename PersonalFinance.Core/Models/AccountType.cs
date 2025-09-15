@@ -1,4 +1,4 @@
-namespace PersonalFianance.Core.Models;
+namespace PersonalFinance.Core.Models;
 
 public class AccountType
 {

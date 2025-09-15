@@ -1,6 +1,6 @@
-namespace PersonalFianance.Core.Models;
+namespace PersonalFinance.Core.Models;
 
-public class Transaction : Movement
+public class TransactionMovement : Movement
 {
     public DateTime Date { get; set; }
     public int Type { get; set; }

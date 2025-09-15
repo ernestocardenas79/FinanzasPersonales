@@ -1,8 +1,7 @@
-using System.Diagnostics.Contracts;
-using PersonalFianance.Core.Enums;
-using PersonalFianance.Core.Models;
+using PersonalFinance.Core.Enums;
+using PersonalFinance.Core.Models;
 
-namespace PersonalFianance.Api.Models;
+namespace PersonalFinance.Core.Models;
 
 public class ScheduledMovement : Movement
 {

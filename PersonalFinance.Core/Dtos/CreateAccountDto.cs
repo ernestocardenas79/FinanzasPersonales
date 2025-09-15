@@ -1,4 +1,4 @@
-using PersonalFianance.Core.Models;
+using PersonalFinance.Core.Models;
 
 public abstract class AccountDto
 {

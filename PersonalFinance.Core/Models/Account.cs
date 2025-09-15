@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-namespace PersonalFianance.Core.Models;
+namespace PersonalFinance.Core.Models;
 
 public class Account
 {
@@ -9,5 +9,5 @@ public class Account
     public required AccountType Type { get; set; }
     public required int TypeId { get; set; }
     public required short BillingCycleDate { get; set; }
-    public virtual ICollection<Transaction>? Transactions { get; set; }
+    public virtual ICollection<TransactionMovement>? Transactions { get; set; }
 }
