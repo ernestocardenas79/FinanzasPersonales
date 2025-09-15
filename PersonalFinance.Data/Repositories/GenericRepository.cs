@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
-namespace PersonalFianance.Data.Repositories;
+namespace PersonalFinance.Data.Repositories;
 
 public class GenericRepository<T> : IGenericRepository<T> where T : class
 {

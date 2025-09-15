@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using PersonalFianance.Core.Models;
-using PersonalFianance.Api.Models;
+using PersonalFinance.Core.Models;
 
-namespace PersonalFianance.Data;
+namespace PersonalFinance.Data;
 
 public class FinanceDbContext : DbContext
 {
@@ -10,9 +9,9 @@ public class FinanceDbContext : DbContext
 
     // DbSets para las entidades
     public DbSet<Account> Accounts { get; set; }
-    public DbSet<AccountType> Types { get; set; }
-    public DbSet<ScheduledMovement> ScheduledMovments { get; set; }
-    public DbSet<Transaction> Transactions { get; set; }
+    public DbSet<AccountType> AccountTypes { get; set; }
+    public DbSet<ScheduledMovement> ScheduledMovements { get; set; }
+    public DbSet<TransactionMovement> Transactions { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,7 +27,7 @@ public class FinanceDbContext : DbContext
                 m.HasKey(c => c.Id);
             });
 
-        modelBuilder.Entity<Transaction>(m =>
+        modelBuilder.Entity<TransactionMovement>(m =>
         {
             m.HasOne(t => t.Account)
              .WithMany(c => c.Transactions)
@@ -46,9 +45,7 @@ public class FinanceDbContext : DbContext
             new AccountType { Id = 4, Name = "Inversion", IsIncome = true });
         });
 
-
         modelBuilder.Entity<ScheduledMovement>().HasKey(m => m.Id);
-
 
         // Si tienes herencia o configuraciones específicas, puedes agregarlas aquí
     }

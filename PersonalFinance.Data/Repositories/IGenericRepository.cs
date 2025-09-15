@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 
-namespace PersonalFianance.Data.Repositories
+namespace PersonalFinance.Data.Repositories
 {
     public interface IGenericRepository<T> where T : class
     {

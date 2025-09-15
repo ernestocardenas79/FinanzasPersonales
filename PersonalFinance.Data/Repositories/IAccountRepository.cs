@@ -1,5 +1,5 @@
-using PersonalFianance.Core.Models;
-using PersonalFianance.Data.Repositories;
+using PersonalFinance.Core.Models;
+using PersonalFinance.Data.Repositories;
 
 public interface IAccountRepository : IGenericRepository<Account>
 {
