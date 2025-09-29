@@ -29,9 +29,7 @@ public class FinanceDbContext : DbContext
 
         modelBuilder.Entity<TransactionMovement>(m =>
         {
-            m.HasOne(t => t.Account)
-             .WithMany(c => c.Transactions)
-             .HasForeignKey(t => t.AccountId);
+            m.HasOne(t => t.Account);
             m.HasKey(t => t.Id);
         });
 
@@ -47,6 +45,5 @@ public class FinanceDbContext : DbContext
 
         modelBuilder.Entity<ScheduledMovement>().HasKey(m => m.Id);
 
-        // Si tienes herencia o configuraciones específicas, puedes agregarlas aquí
     }
 }

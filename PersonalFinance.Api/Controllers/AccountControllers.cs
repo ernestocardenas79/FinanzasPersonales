@@ -44,13 +44,13 @@ namespace PersonalFianance.Api.Controllers
             var account = new Account
             {
                 Name = newAccount.Name,
-                Type = AccountType.DebitAccount,
                 TypeId = AccountType.DebitAccount.Id,
                 Balance = newAccount.OpeningBalance,
                 BillingCycleDate = 5
             };
 
             await _repository.AddAsync(account);
+            await _repository.SaveAsync();
             return CreatedAtAction(nameof(GetAccount), new { id = account.Id }, newAccount);
         }
 
