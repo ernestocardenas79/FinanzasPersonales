@@ -1,0 +1,20 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2025-latest
+    container_name: sqlKl3lDev
+    env_file:
+      - .env
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+      - FinanceBroker=${FinanceBroker}
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlKl3lDev_data:/var/opt/mssql
+      - ./PersonalFinanceDBInit.sql:/init-db.sql
+      - ./entrypoint.sh:/entrypoint.sh
+    entrypoint: ["/bin/bash", "/entrypoint.sh"]
+
+volumes:
+  sqlKl3lDev_data:
