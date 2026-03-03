@@ -3,11 +3,9 @@ using PersonalFinance.Core.Models;
 
 namespace PersonalFinance.Data;
 
-public class FinanceDbContext : DbContext
+public class FinanceDbContext(DbContextOptions<FinanceDbContext> options) : DbContext(options)
 {
-    public FinanceDbContext(DbContextOptions<FinanceDbContext> options) : base(options) { }
-
-    // DbSets para las entidades
+    // DbSets for the entities 
     public DbSet<Account> Accounts { get; set; }
     public DbSet<AccountType> AccountTypes { get; set; }
     public DbSet<ScheduledMovement> ScheduledMovements { get; set; }
@@ -17,7 +15,7 @@ public class FinanceDbContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // Configuración adicional para las entidades
+        // Additional entities's configuration 
         modelBuilder
             .Entity<Account>(m =>
             {
@@ -39,7 +37,7 @@ public class FinanceDbContext : DbContext
             m.HasKey(t => t.Id);
             m.HasData(new AccountType { Id = 1, Name = "Efectivo", IsIncome = true },
             new AccountType { Id = 2, Name = "Cuenta Debito", IsIncome = true },
-            new AccountType { Id = 3, Name = "Cuenta Creadito", IsIncome = false },
+            new AccountType { Id = 3, Name = "Cuenta Credito", IsIncome = false },
             new AccountType { Id = 4, Name = "Inversion", IsIncome = true });
         });
 
