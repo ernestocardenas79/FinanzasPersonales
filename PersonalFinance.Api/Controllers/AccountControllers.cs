@@ -1,31 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
-using PersonalFinance.Data.Repositories;
 using PersonalFinance.Core.Models;
+using PersonalFinance.Data.Repositories;
 
-namespace PersonalFianance.Api.Controllers
+namespace PersonalFinance.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class AccountController : ControllerBase
+    public class AccountController(IGenericRepository<Account> repository) : ControllerBase
     {
-        private readonly IGenericRepository<Account> _repository;
-
-        public AccountController(IGenericRepository<Account> repository)
-        {
-            _repository = repository;
-        }
-
         [HttpGet]
         public async Task<IActionResult> GetAccounts()
         {
-            var accounts = await _repository.GetAllAsync();
+            var accounts = await repository.GetAllAsync();
             return Ok(accounts);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAccount(int id)
         {
-            var account = await _repository.GetByIdAsync(id);
+            var account = await repository.GetByIdAsync(id);
             if (account == null)
             {
                 return NotFound();
@@ -49,8 +42,8 @@ namespace PersonalFianance.Api.Controllers
                 BillingCycleDate = 5
             };
 
-            await _repository.AddAsync(account);
-            await _repository.SaveAsync();
+            await repository.AddAsync(account);
+            await repository.SaveAsync();
             return CreatedAtAction(nameof(GetAccount), new { id = account.Id }, newAccount);
         }
 
@@ -63,7 +56,7 @@ namespace PersonalFianance.Api.Controllers
                 return BadRequest(ModelState);
             }
 
-            await _repository.AddAsync(newAccount);
+            await repository.AddAsync(newAccount);
             return CreatedAtAction(nameof(GetAccount), new { id = newAccount.Id }, newAccount);
         }
 
@@ -75,26 +68,26 @@ namespace PersonalFianance.Api.Controllers
                 return BadRequest();
             }
 
-            var existentAccount = await _repository.GetByIdAsync(id);
+            var existentAccount = await repository.GetByIdAsync(id);
             if (existentAccount == null)
             {
                 return NotFound();
             }
 
-            _repository.Update(updatedAccount);
+            repository.Update(updatedAccount);
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> BorrarCuenta(int id)
+        public async Task<IActionResult> DeletingAccount(int id)
         {
-            var cuenta = await _repository.GetByIdAsync(id);
-            if (cuenta == null)
+            var account = await repository.GetByIdAsync(id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            _repository.Delete(cuenta);
+            repository.Delete(account);
             return NoContent();
         }
     }
