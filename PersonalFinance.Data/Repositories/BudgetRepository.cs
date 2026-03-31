@@ -11,7 +11,9 @@ public class BudgetRepository(FinanceDbContext context) : IBudgetRepository
 
     public async Task<ResponseBudgetDto> GetAsync(int id)
     {
-        var budget = await Budget.Where(b=> b.Id==id).FirstOrDefaultAsync();
+        var budget = await Budget
+                                            .Where(b=> b.Id==id && b.NumberOfPeriods==0)
+                                            .FirstOrDefaultAsync();
         if (budget == null)
             return new(){Name = ""};
             
@@ -28,7 +30,8 @@ public class BudgetRepository(FinanceDbContext context) : IBudgetRepository
     public async Task<IEnumerable<ResponseBudgetDto>> GetAllAsync()
     {
         var sm = await Budget.ToListAsync();
-        var result = from budget in sm select new ResponseBudgetDto()
+        var result = from budget in sm 
+                                                where budget.NumberOfPeriods==0 select new ResponseBudgetDto()
         {
             Amount = budget.Amount,
             Name = budget.Concept,
