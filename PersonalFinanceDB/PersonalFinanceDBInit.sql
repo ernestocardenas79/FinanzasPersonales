@@ -1,11 +1,16 @@
-IF DB_ID('PersonalFinance') IS NULL
+IF DB_ID(N'PersonalFinance') IS NULL
 BEGIN
+    PRINT 'Creating database PersonalFinance...';
     create DATABASE PersonalFinance;
+END
+ELSE
+BEGIN
+    PRINT 'Database PersonalFinance already exists.';
 END
 GO
 IF NOT EXISTS (SELECT * FROM sys.server_principals WHERE name = 'FinanceBroker')
 BEGIN
-    Create LOGIN FinanceBroker WITH PASSWORD= '$(FinanceBroker)';
+    Create LOGIN FinanceBroker WITH PASSWORD= '$(FINANCE_RUNTIME_PASSWORD)';
 END
 GO
 USE PersonalFinance;
