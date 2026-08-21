@@ -1,0 +1,31 @@
+name: Database Contracts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-runner:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show environment
+        run: |
+          echo "Runner: $RUNNER_NAME"
+          echo "OS: $RUNNER_OS"
+          echo "Workspace: $GITHUB_WORKSPACE"
+
+      - name: Verify Docker
+        run: |
+          docker info
+          docker ps
+
+      - name: Verify SQL Server container
+        run: |
+          docker inspect sqlserver \
+            --format 'Status: {{.State.Status}}'
+
+          docker inspect sqlserver \
+            --format 'Health: {{if .State.Health}}{{.State.Health.Status}}{{else}}none{{end}}'
