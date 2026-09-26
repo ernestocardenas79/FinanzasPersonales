@@ -1,8 +1,10 @@
 name: Database Contracts
 
 on:
-  workflow_dispatch:
-
+ workflow_dispatch: 
+ push:
+   branches:
+     - main    
 jobs:
   test-runner:
     runs-on: ubuntu-latest
