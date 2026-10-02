@@ -1,0 +1,7 @@
+﻿services:
+  personalfinance.api:
+    image: personalfinance.api
+    build:
+      context: .
+      dockerfile: PersonalFinance.Api/Dockerfile
+
