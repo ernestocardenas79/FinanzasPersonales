@@ -78,3 +78,38 @@ jobs:
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:sha-${{ github.sha }}
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:dev
+
+  notify-deployment:
+    needs: publish-image
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify deployment repository
+        env:
+          GH_TOKEN: ${{ secrets.DEPLOYMENT_DISPATCH_TOKEN }}
+        run: |
+          curl --fail-with-body --silent --show-error \
+            --request POST \
+            --url https://api.github.com/repos/ernestocardenas79/PersonalFinance-deployment/dispatches \
+            --header "Accept: application/vnd.github+json" \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "X-GitHub-Api-Version: 2022-11-28" \
+            --header "Content-Type: application/json" \
+            --data '{
+              "event_type": "application-published",
+              "client_payload": {
+                "tag": "sha-${{ github.sha }}",
+                "commit": "${{ github.sha }}",
+                "environment": "dev"
+              }
+            }'
+
+      - name: Confirm dispatch sent
+        run: echo "Deployment event sent successfully."
+
+
+
+
+
+            
